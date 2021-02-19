@@ -82,6 +82,7 @@ Plug 'flazz/vim-colorschemes'
 
 
 
+
 " Async autocompletion
 if using_neovim && vim_plug_just_installed
     Plug 'Shougo/deoplete.nvim', {'do': ':autocmd VimEnter * UpdateRemotePlugins'}
@@ -108,6 +109,7 @@ Plug 'jeetsukumaran/vim-indentwise'
 " Better language packs
 Plug 'sheerun/vim-polyglot'
 " Ack code search (requires ack installed in the system)
+Plug 'mileszs/ack.vim'
 Plug 'mileszs/ack.vim'
 " Paint css colors with the real color
 Plug 'lilydjwg/colorizer'
@@ -765,7 +767,6 @@ endfunction
   call s:hi('SignifySignDelete',                  s:red,    s:base00, s:bold,      '')
   call s:hi('SignifySignChangeDelete',            s:purple, s:base00, s:bold,      '')
   call s:hi('SignifySignDeleteFirstLine',         s:red,    s:base00, s:bold,      '')
-
   call s:hi('xmlTag',                             s:cyan,   '',       '',          '')
   call s:hi('xmlTagName',                         s:base05, '',       '',          '')
   call s:hi('xmlEndTag',                          s:cyan,   '',       '',          '')
@@ -835,3 +836,12 @@ else
      \]
 
 endif
+
+"=================================================================
+
+noremap <silent> <C-s>      :update<CR>            " Ctrl-s save
+vnoremap <silent> <C-s>     <C-C>:update<CR>
+inoremap <silent> <C-s>     <C-O>:update<CR>
+
+inoremap <buffer> > ></<C-x><C-o><C-y><C-o>%<CR><C-o>O  " Complete html-tags
+
